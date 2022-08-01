@@ -2,17 +2,16 @@
  * @Author: liuyichen
  * @Date: 2022-07-28 10:06:52
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-01 08:45:32
+ * @LastEditTime: 2022-08-01 10:32:35
  * @FilePath: \代码仓库\shop_dev_react\src\App.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
  */
-import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import Login from '../src/pages/login'
-import {Link, Routes, Route,BrowserRouter,useNavigate } from 'react-router-dom'
+import { Routes, Route,BrowserRouter } from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>

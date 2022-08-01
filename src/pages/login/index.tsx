@@ -2,16 +2,18 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 08:42:40
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-01 10:19:02
+ * @LastEditTime: 2022-08-01 17:21:58
  * @FilePath: \代码仓库\shop_dev_react\src\pages\login\index.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
  */
 import { Button, Checkbox, Form, Input } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './index.module.scss'
+import http from '../../until/http';
 const Login: React.FC = () => {
+  const [form] = Form.useForm();
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -20,9 +22,23 @@ const Login: React.FC = () => {
     console.log('Failed:', errorInfo);
   };
 
+  const login = async () => {
+    let param = form.getFieldsValue()
+    console.log(param)
+    let res = await http('get', '/login',
+      param
+    )
+    console.log(res)
+  }
+
+  // useEffect(()=>{
+  //   login()
+  // },[])
+
   return (
     <div className={styles.login}>
       <Form
+        form={form}
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
@@ -33,7 +49,7 @@ const Login: React.FC = () => {
       >
         <Form.Item
           label="登录账号"
-          name="username"
+          name="userName"
           rules={[{ required: true, message: '请输入正确的用户名' }]}
         >
           <Input />
@@ -41,7 +57,7 @@ const Login: React.FC = () => {
 
         <Form.Item
           label="登录密码"
-          name="password"
+          name="passWord"
           rules={[{ required: true, message: '请输入正确的密码' }]}
         >
           <Input.Password />
@@ -52,7 +68,9 @@ const Login: React.FC = () => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
+          <Button onClick={() => {
+            login()
+          }} type="primary" htmlType="submit">
             登录
           </Button>
         </Form.Item>
