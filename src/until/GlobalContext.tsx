@@ -1,16 +1,32 @@
 import React, {  useEffect, useState, useContext,ReactNode } from 'react'
-const GlobalContext = React.createContext<{user:string}|undefined>(undefined); // 创建context对象
+
+
+interface GlobaltType {
+  user?:string,
+  token?:string,
+  setUser?:Function,
+  setToken?:Function
+}
+
+
+const GlobalContext = React.createContext<GlobaltType|undefined>(undefined); // 创建context对象
 
 GlobalContext.displayName = 'GlobalContext'
 
 
 // Provider
 export const GlobalProvider= ({ children }: { children: ReactNode }) => {
-  let user:string = 'lyc'
+  const [user,setUser] = useState()
+  const [token,setToken] = useState()
   return (
     <GlobalContext.Provider
       children={children}
-      value={{user}}
+      value={{
+        user:user,
+        token:token,
+        setUser:setUser,
+        setToken:setToken
+      }}
     />
   );
 }

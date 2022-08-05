@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 10:44:05
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-04 14:39:25
+ * @LastEditTime: 2022-08-05 10:26:16
  * @FilePath: \代码仓库\shop_dev_react\src\until\http.tsx
  * @Description: 
  * 
@@ -54,7 +54,7 @@ export function get(url:string, params = {}) {
         params: params,
       }).then((response) => {
         // landing(url, params, response.data);
-        resolve(response);
+        resolve(response.data);
       })
       .catch((error) => {
         reject(error);
@@ -74,7 +74,7 @@ export function post(url:string, data = {}) {
     axios.post(url, data).then(
       (response) => {
         //关闭进度条
-        resolve(response);
+        resolve(response.data);
       },
       (err) => {
         reject(err);
@@ -93,7 +93,7 @@ export function patch(url:string, data = {}) {
   return new Promise((resolve, reject)  => {
     axios.patch(url, data).then(
       (response) => {
-        resolve(response);
+        resolve(response.data);
       },
       (err) => {
         msag(err);
@@ -114,7 +114,7 @@ export function put(url:string, data = {}) {
   return new Promise((resolve, reject) => {
     axios.put(url, data).then(
       (response) => {
-        resolve(response);
+        resolve(response.data);
       },
       (err) => {
         msag(err);
