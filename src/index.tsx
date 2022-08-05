@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-07-28 10:06:52
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-01 10:14:08
+ * @LastEditTime: 2022-08-04 16:56:40
  * @FilePath: \代码仓库\shop_dev_react\src\index.tsx
  * @Description: 
  * 
@@ -17,6 +17,7 @@ import 'antd/dist/antd.min.css';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode >
     <App />
