@@ -1,20 +1,40 @@
-.login{
-    display: flex;
-    justify-content: center;
+.login {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     height: 100%;
-    align-items: center;
+    // background-color: #f0f2f5;
+   
+
+    .logo {
+        padding: 12px;
+        max-width: 400px;
+        height: 220px;
+        margin: auto;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    :global(.adm-button){
+        display: block;
+        margin: auto;
+    }
+
     .extraPart {
         border-left: solid 1px #eeeeee;
         padding-left: 12px;
         font-size: 17px;
         line-height: 22px;
-      }
-      .eye {
+    }
+
+    .eye {
         padding: 4px;
         cursor: pointer;
+
         svg {
-          display: block;
-          font-size: var(--adm-font-size-7);
+            display: block;
+            font-size: var(--adm-font-size-7);
         }
-      }
+    }
 }

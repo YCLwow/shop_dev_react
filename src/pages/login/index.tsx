@@ -2,19 +2,19 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 08:42:40
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-05 14:15:52
+ * @LastEditTime: 2022-08-08 08:50:34
  * @FilePath: \代码仓库\shop_dev_react\src\pages\login\index.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
  */
-import { Button, Checkbox, Form, Input,Toast  } from 'antd-mobile';
+import { Button, Checkbox, Form, Input, Toast } from 'antd-mobile';
 import React, { useContext } from 'react';
 import styles from './index.module.scss'
 import http from '../../until/http';
 import { useGlobal } from '../../until/GlobalContext'
 import { useNavigate } from 'react-router-dom';
-
+import logo from  '../../images/login/logo.jpeg'
 
 
 const UseLogin: React.FC = () => {
@@ -32,9 +32,9 @@ const UseLogin: React.FC = () => {
   const login = async () => {
     let validate = await form.validateFields()
     let param = form.getFieldsValue()
-    if(!param.remember){
+    if (!param.remember) {
       form.setFieldsValue({
-        remember:''
+        remember: ''
       })
       form.validateFields(['remember'])
       return false
@@ -58,11 +58,16 @@ const UseLogin: React.FC = () => {
 
   return (
     <div className={styles.login}>
+      <div className={styles.logo}>
+        <img src={logo} alt="" />
+      </div>
+
       <Form
         form={form}
         name="basic"
         initialValues={{ remember: true }}
         onFinish={onFinish}
+        mode='card'
         onFinishFailed={onFinishFailed}
       >
         <Form.Item
@@ -78,7 +83,7 @@ const UseLogin: React.FC = () => {
           name="passWord"
           rules={[{ required: true, message: '请输入正确的密码' }]}
         >
-          <Input   clearable/>
+          <Input clearable />
         </Form.Item>
 
         <Form.Item rules={[{ required: true, message: '请同意测试协议后登录' }]} name="remember" valuePropName="checked" >
