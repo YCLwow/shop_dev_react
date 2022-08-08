@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 10:44:05
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-05 10:26:16
+ * @LastEditTime: 2022-08-08 09:43:41
  * @FilePath: \代码仓库\shop_dev_react\src\until\http.tsx
  * @Description: 
  * 
@@ -11,6 +11,11 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
 axios.defaults.timeout = 100000;
 axios.defaults.baseURL = "http://192.168.12.140:4000";
+
+
+// 接口需要带有token参数才能去请求，token出错或者过期都会跳到登录页
+
+
 /**
  * http request 拦截器
  */
@@ -19,6 +24,7 @@ axios.defaults.baseURL = "http://192.168.12.140:4000";
     config.data = JSON.stringify(config.data);
     config.headers = {
       "Content-Type": "application/json;charset=utf-8",
+      "Bearer":window.localStorage.getItem("token")! 
     };
     return config;
   },
@@ -32,9 +38,8 @@ axios.defaults.baseURL = "http://192.168.12.140:4000";
  */
 axios.interceptors.response.use(
   (response) => {
-    if (response.data.errCode === 2) {
-      console.log("过期");
-    }
+    console.log(response)
+    debugger
     return response;
   },
   (error) => {
@@ -53,6 +58,7 @@ export function get(url:string, params = {}) {
     axios.get(url, {
         params: params,
       }).then((response) => {
+        debugger
         // landing(url, params, response.data);
         resolve(response.data);
       })

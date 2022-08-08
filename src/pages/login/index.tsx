@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 08:42:40
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-08 08:50:34
+ * @LastEditTime: 2022-08-08 09:27:44
  * @FilePath: \代码仓库\shop_dev_react\src\pages\login\index.tsx
  * @Description: 
  * 
@@ -45,6 +45,7 @@ const UseLogin: React.FC = () => {
     console.log(res)
     if (res.sucess) {
       value.setToken!(res.data)
+      localStorage.setItem('token',res.data)
       navigate('/home')
     } else {
       Toast.show({
