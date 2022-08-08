@@ -2,13 +2,13 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 08:42:40
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-05 10:52:07
+ * @LastEditTime: 2022-08-05 14:15:52
  * @FilePath: \代码仓库\shop_dev_react\src\pages\login\index.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
  */
-import { Button, Checkbox, Form, Input, message } from 'antd';
+import { Button, Checkbox, Form, Input,Toast  } from 'antd-mobile';
 import React, { useContext } from 'react';
 import styles from './index.module.scss'
 import http from '../../until/http';
@@ -47,7 +47,12 @@ const UseLogin: React.FC = () => {
       value.setToken!(res.data)
       navigate('/home')
     } else {
-      message.error(res.message)
+      Toast.show({
+        content: res.message,
+        afterClose: () => {
+          console.log('after')
+        },
+      })
     }
   }
 
@@ -56,12 +61,9 @@ const UseLogin: React.FC = () => {
       <Form
         form={form}
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
       >
         <Form.Item
           label="登录账号"
@@ -76,17 +78,17 @@ const UseLogin: React.FC = () => {
           name="passWord"
           rules={[{ required: true, message: '请输入正确的密码' }]}
         >
-          <Input.Password />
+          <Input   clearable/>
         </Form.Item>
 
-        <Form.Item rules={[{ required: true, message: '请同意测试协议后登录' }]} name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item rules={[{ required: true, message: '请同意测试协议后登录' }]} name="remember" valuePropName="checked" >
           <Checkbox>同意测试协议</Checkbox>
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item >
           <Button onClick={() => {
             login()
-          }} type="primary" htmlType="submit">
+          }} >
             登录
           </Button>
         </Form.Item>

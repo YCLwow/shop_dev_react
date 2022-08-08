@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-07-28 10:06:52
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-04 16:56:40
+ * @LastEditTime: 2022-08-05 14:16:17
  * @FilePath: \代码仓库\shop_dev_react\src\index.tsx
  * @Description: 
  * 
@@ -13,7 +13,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.min.css';
+// import 'antd/dist/antd.min.css';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
