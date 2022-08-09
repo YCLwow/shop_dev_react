@@ -1,3 +1,44 @@
-.home{
+.home {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
 
+  .swiper {
+    height: 250px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    user-select: none;
+
+    .swiperMain {
+      background-color: yellow;
+      width: 100%;
+      height: 100%;
+      background-size: 100% 100%;
+    }
+  }
+
+  .navgtion {
+    width: 100%;
+    height: 90px;
+    background-color: #fff;
+    display: flex;
+
+    div {
+      width: 25%;
+      text-align: center;
+      padding-top: 20px;
+
+      p {
+        margin: 0px;
+      }
+
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
 }
