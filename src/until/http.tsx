@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 10:44:05
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-08 09:43:41
+ * @LastEditTime: 2022-08-08 10:22:18
  * @FilePath: \代码仓库\shop_dev_react\src\until\http.tsx
  * @Description: 
  * 
@@ -39,7 +39,6 @@ axios.defaults.baseURL = "http://192.168.12.140:4000";
 axios.interceptors.response.use(
   (response) => {
     console.log(response)
-    debugger
     return response;
   },
   (error) => {
@@ -58,7 +57,6 @@ export function get(url:string, params = {}) {
     axios.get(url, {
         params: params,
       }).then((response) => {
-        debugger
         // landing(url, params, response.data);
         resolve(response.data);
       })
