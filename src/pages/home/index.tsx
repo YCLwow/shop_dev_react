@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-07-29 14:46:15
  * @LastEditors: 周铁柔 aa3441759088@163.com
- * @LastEditTime: 2022-08-09 09:24:54
+ * @LastEditTime: 2022-08-09 10:47:58
  * @FilePath: \代码仓库\shop_dev_react\src\pages\home\index.tsx
  * @Description: 
  * 
@@ -16,6 +16,7 @@ import close from '../../images/home/close.jpg'
 import shoes from '../../images/home/shoes.jpg'
 import home from '../../images/home/home.jpg'
 import life from '../../images/home/life.jpg'
+import title from '../../images/home/title.jpg'
 
 import { Button, Space, Swiper, Toast } from 'antd-mobile'
 const UseHome = () => {
@@ -64,6 +65,14 @@ const UseHome = () => {
           <p>
             生活用品
           </p>
+        </div>
+      </div>
+      <div className={styles.content} >
+        <div className={styles.title}>
+          <img src={title} alt="" />
+          <span>
+            与品质生活不期而遇
+          </span>
         </div>
       </div>
     </div>

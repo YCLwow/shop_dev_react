@@ -41,4 +41,32 @@
       }
     }
   }
+
+  .content {
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    margin-top: 20px;
+
+    .title {
+      width: 100%;
+      height: 48px;
+      color: #e9e9e9;
+      margin-right: 24px;
+      line-height: 24px;
+      margin-bottom: 24px;
+
+      img {
+        height: 48px;
+        margin-right: 24px;
+        float: left;
+      }
+
+      span {
+        display: inline-block;
+        line-height: 48px;
+        float: left;
+      }
+    }
+  }
 }
