@@ -4,9 +4,9 @@
  * @LastEditors: 周铁柔 aa3441759088@163.com
  * @LastEditTime: 2022-08-09 10:47:58
  * @FilePath: \代码仓库\shop_dev_react\src\pages\home\index.tsx
- * @Description: 
- * 
- * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
+ * @Description:
+ *
+ * Copyright (c) 2022 by liuyichen, All Rights Reserved.
  */
 import styles from './index.module.scss'
 import blueMoon from '../../images/home/blueMoon.jpg'
@@ -17,62 +17,154 @@ import shoes from '../../images/home/shoes.jpg'
 import home from '../../images/home/home.jpg'
 import life from '../../images/home/life.jpg'
 import title from '../../images/home/title.jpg'
+import main from '../../images/home/main.png'
 
 import { Button, Space, Swiper, Toast } from 'antd-mobile'
 const UseHome = () => {
-  const imgs = [{ id: 1, src: tea }, { id: 2, src: blueMoon }, { id: 3, src: jiu }]
+  const imgs = [
+    { id: 1, src: tea },
+    { id: 2, src: blueMoon },
+    { id: 3, src: jiu },
+  ]
 
   return (
     <div className={styles.home}>
-      <div className={styles.swiper} >
-        <Swiper>{
-          imgs.map(item => (
+      <div className={styles.swiper}>
+        <Swiper>
+          {imgs.map((item) => (
             <Swiper.Item key={item.id}>
               <div
                 className={styles.swiper}
                 onClick={() => {
                   Toast.show(`你点击了卡片 ${item.id}`)
-                }}
-              >
+                }}>
                 {/* <img src={item.src} alt="" /> */}
-                <div className={styles.swiperMain} style={{ backgroundImage: `url(${item.src})` }} ></div>
+                <div
+                  className={styles.swiperMain}
+                  style={{ backgroundImage: `url(${item.src})` }}></div>
               </div>
             </Swiper.Item>
-          ))
-        }</Swiper>
+          ))}
+        </Swiper>
       </div>
       <div className={styles.navgtion}>
         <div>
           <img src={close} alt="" />
-          <p>
-            衣服
-          </p>
+          <p>衣服</p>
         </div>
         <div>
           <img src={shoes} alt="" />
-          <p>
-            鞋子
-          </p>
+          <p>鞋子</p>
         </div>
         <div>
           <img src={home} alt="" />
-          <p>
-            家具
-          </p>
+          <p>家具</p>
         </div>
         <div>
           <img src={life} alt="" />
-          <p>
-            生活用品
-          </p>
+          <p>生活用品</p>
         </div>
       </div>
-      <div className={styles.content} >
+      <div className={styles.content}>
         <div className={styles.title}>
           <img src={title} alt="" />
-          <span>
-            与品质生活不期而遇
-          </span>
+          <span>与品质生活不期而遇</span>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+      </div>
+      <div className={styles.content}>
+        <div className={styles.title}>
+          <img src={title} alt="" />
+          <span>与品质生活不期而遇</span>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
+        </div>
+        <div className={styles.main}>
+          <img src={main} alt="" />
+          <p>可折叠双面床的使用</p>
+          <p className={styles.secondP}>可折叠aaaaaa双面床的使用</p>
         </div>
       </div>
     </div>
