@@ -1,0 +1,32 @@
+.shoppingCat {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  overflow: hidden;
+  .main {
+    overflow: hidden;
+    margin-top: 10px;
+    .title {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      background-color: #fff;
+      font-size: 18px;
+      padding-left: 10px;
+      border-bottom: 2px solid #eee;
+      box-sizing: border-box;
+    }
+    .contant {
+      width: 100%;
+      height: 110px;
+      background-color: #fff;
+      .checkbox {
+        margin-top: 40px;
+        margin-left: 5px;
+        margin-right: 20px;
+        background-color: #eee;
+        border-radius: 25px;
+      }
+    }
+  }
+}
