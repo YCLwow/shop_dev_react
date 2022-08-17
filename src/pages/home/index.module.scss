@@ -4,25 +4,33 @@
   background-color: #eee;
 
   .swiper {
-    height: 250px;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 48px;
-    user-select: none;
+
+    .swiperView {
+      padding: 10px 15px;
+      height: 250px;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
+      user-select: none;
+      // :global(.ant-modal-body) {
+
+      // }
+    }
 
     .swiperMain {
       background-color: yellow;
       width: 100%;
       height: 100%;
       background-size: 100% 100%;
+      border-radius: 5px;
     }
   }
 
   .navgtion {
     width: 100%;
-    height: 90px;
+    height: 80px;
     background-color: #fff;
     display: flex;
 
@@ -33,11 +41,12 @@
 
       p {
         margin: 0px;
+        padding: 10px 0;
       }
 
       img {
-        width: 45px;
-        height: 45px;
+        width: 22px;
+        height: 22px;
         transform: scale(1.1); //原本的图片的大小，图片原来的大小不变
         transition: all 0.6s;
       }
@@ -65,15 +74,16 @@
       margin-bottom: 24px;
 
       img {
-        height: 48px;
+        height: 35px;
         margin-right: 24px;
         float: left;
       }
 
       span {
         display: inline-block;
-        line-height: 48px;
+        line-height: 44px;
         float: left;
+        color: #212121
       }
     }
 
@@ -88,6 +98,7 @@
       img {
         margin-right: 5px;
         float: left;
+        border-radius: 5px;
       }
 
       p {
@@ -100,6 +111,7 @@
 
       .secondP {
         font-size: 12px;
+        color: #2F7CFF;
       }
     }
   }

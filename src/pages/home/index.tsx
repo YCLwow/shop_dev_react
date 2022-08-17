@@ -1,8 +1,8 @@
 /*
  * @Author: liuyichen
  * @Date: 2022-07-29 14:46:15
- * @LastEditors: 周铁柔 aa3441759088@163.com
- * @LastEditTime: 2022-08-09 10:47:58
+ * @LastEditors: liuyichen
+ * @LastEditTime: 2022-08-17 08:53:21
  * @FilePath: \代码仓库\shop_dev_react\src\pages\home\index.tsx
  * @Description:
  *
@@ -34,7 +34,7 @@ const UseHome = () => {
           {imgs.map((item) => (
             <Swiper.Item key={item.id}>
               <div
-                className={styles.swiper}
+                className={styles.swiperView}
                 onClick={() => {
                   Toast.show(`你点击了卡片 ${item.id}`)
                 }}>
