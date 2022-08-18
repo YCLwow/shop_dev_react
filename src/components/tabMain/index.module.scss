@@ -1,0 +1,78 @@
+.tabMain {
+  width: 100%;
+  // height: 100%;
+  // padding-bottom: 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+
+  .title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    background-color: #fff;
+    position: relative;
+
+    .contant {
+      width: 80px;
+      height: 100%;
+      background-color: #fff;
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .line {
+      width: 60%;
+      height: 2px;
+      background-color: #eee;
+      position: absolute;
+      top: 50%;
+      left: 20%;
+    }
+  }
+
+  .exhibition {
+    width: 100%;
+    padding: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .commodity {
+      width: 31%;
+      height: 210px;
+      background-color: #fff;
+      margin-bottom: 10px;
+
+      .commodityImg {
+        width: 100%;
+        height: 140px;
+        background-size: 100% 100%;
+        background-image: url(../../images/tabMain/close.jpg);
+      }
+
+      p {
+        margin: 0;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+
+      span {
+        color: darkgray;
+        margin-right: 20px;
+      }
+
+      .realPrice {
+        color: red;
+      }
+    }
+  }
+}
