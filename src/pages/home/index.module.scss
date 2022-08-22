@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   background-color: #eee;
+  overflow: auto;
 
   .swiper {
 
@@ -71,56 +72,146 @@
       color: #e9e9e9;
       margin-right: 24px;
       line-height: 24px;
-      margin-bottom: 24px;
+      display: flex;
 
       img {
-        height: 35px;
-        margin-right: 24px;
-        float: left;
+        height: 20px;
+        width: 56px;
+        // margin-right: 10px;
+        display: inline-block;
+        padding: 8px 5px;
+
       }
 
       span {
         display: inline-block;
-        line-height: 44px;
-        float: left;
-        color: #212121
+        height: 35px;
+        line-height: 42px;
+        color: #999999
       }
     }
 
-    .main {
-      width: 50%;
-      height: 50px;
-      float: left;
-      padding: 0 10px;
-      box-sizing: border-box;
-      margin-bottom: 20px;
+    .cardBox {
+      display: flex;
+      flex-wrap: nowrap;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
 
-      img {
-        margin-right: 5px;
-        float: left;
-        border-radius: 5px;
-      }
+      .main {
+        display: flex;
+        width: 47%;
+        padding: 5px;
 
-      p {
-        vertical-align: top;
-        font-size: 15px;
-        float: left;
-        margin: 0;
-        width: 125px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        white-space: nowrap
-      }
+        .left {
+          display: flex;
+          width: 24%;
 
-      .secondP {
-        font-size: 12px;
-        color: #2F7CFF;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        white-space: nowrap
+          img {
+            height: 45px;
+          }
+        }
+
+        .right {
+          display: flex;
+          width: 76%;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-left: 5px;
+        }
       }
+    }
+
+  }
+
+  .recommend {
+    margin: 10px 0;
+
+    img {
+      width: 100%;
+      height: 35px;
     }
   }
+
+  .hotSale {
+    background-color: white;
+
+    .title {
+      padding-left: 10px;
+      height: 35px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #FF5A27;
+      line-height: 35px;
+
+      span {
+        border-left: 2px solid #ff190b;
+        padding-left: 5px;
+      }
+    }
+
+    .saleBodyblock {
+      ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        li {
+          box-sizing: border-box;
+          width: 33.33%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 0.64rem;
+          img{
+            height: 80px;
+          }
+          .hotBt {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            span {
+              .mark {
+                color: #F40;
+              }
+
+              .price {
+                color: #F40;
+              }
+              
+            }
+            .volume{
+              color: #999999;
+            }
+          }
+          p {
+            color: #333333;
+            margin: 0 0.72533333rem;
+            text-overflow: -o-ellipsis-lastline;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /*去掉li左侧的点*/
 }
