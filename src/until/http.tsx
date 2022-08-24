@@ -2,223 +2,86 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 10:44:05
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-08 10:22:18
- * @FilePath: \代码仓库\shop_dev_react\src\until\http.tsx
+ * @LastEditTime: 2022-08-23 14:13:37
+ * @FilePath: \shop_dev_react\src\until\http.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
  */
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
-axios.defaults.timeout = 100000;
-axios.defaults.baseURL = "http://192.168.12.140:4000";
 
-
-// 接口需要带有token参数才能去请求，token出错或者过期都会跳到登录页
-
-
-/**
- * http request 拦截器
- */
- axios.interceptors.request.use(
-  (config) => {
-    config.data = JSON.stringify(config.data);
-    config.headers = {
-      "Content-Type": "application/json;charset=utf-8",
-      "Bearer":window.localStorage.getItem("token")! 
-    };
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
+import { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios from "axios"
+import { RequestOptions } from "http";
+// axios
+export default class Request {
+  // 保存axios实例
+  private axiosInstance: AxiosInstance;
+  // 保存请求公共配置，所有Request实例的请求都共用的这个配置 (只读属性) 也可以传进来配置项
+  private readonly options: AxiosRequestConfig;
+  constructor(options: AxiosRequestConfig) {
+    this.options = options;
+    this.axiosInstance = axios.create(options);
   }
-);
-
-/**
- * http response 拦截器
- */
-axios.interceptors.response.use(
-  (response) => {
-    console.log(response)
-    return response;
-  },
-  (error) => {
-    console.log("请求出错：", error);
+  // 提供一个方法可以修改当前保存的axios实例
+  setAxios(config: AxiosRequestConfig): void {
+    this.axiosInstance = axios.create(config);
   }
-);
+  // 获取当前axios实例
+  getAxios() {
+    return this.axiosInstance;
+  }
+  // 请求的方法 axios  
+  // curRequestOptions是每个请求都可以有自己配置的options，用于覆盖公共的配置
+  request<T = any>(config: AxiosRequestConfig, curRequestOtions?: RequestOptions): Promise<T> {
+    console.log(curRequestOtions)
+    return new Promise((resolve, reject) => {
+      this.axiosInstance
+        .request<T>(config)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
 
-/**
- * 封装get方法
- * @param url  请求url
- * @param params  请求参数
- * @returns {Promise}
- */
-export function get(url:string, params = {}) {
-  return new Promise((resolve, reject) => {
-    axios.get(url, {
-        params: params,
-      }).then((response) => {
-        // landing(url, params, response.data);
-        resolve(response.data);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-}
-
-/**
- * 封装post请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function post(url:string, data = {}) {
-  return new Promise((resolve, reject) => {
-    axios.post(url, data).then(
-      (response) => {
-        //关闭进度条
-        resolve(response.data);
-      },
-      (err) => {
-        reject(err);
+  // 重载
+  get<T = any>(url: string, data: any): Promise<T>;
+  get<T = any>(config: AxiosRequestConfig, curRequestOtions?: RequestOptions): Promise<T>;
+  // get请求
+  get(config: string | AxiosRequestConfig, data: any = undefined) {
+    let conf: AxiosRequestConfig = {};
+    let options = undefined;
+    if (typeof config === 'string') {
+      conf.url = config;
+      conf.params = data;
+    } else {
+      conf = config;
+      if (data) {
+        options = data;
       }
-    );
-  });
-}
-
-/**
- * 封装patch请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-export function patch(url:string, data = {}) {
-  return new Promise((resolve, reject)  => {
-    axios.patch(url, data).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (err) => {
-        msag(err);
-        reject(err);
-      }
-    );
-  });
-}
-
-/**
- * 封装put请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function put(url:string, data = {}) {
-  return new Promise((resolve, reject) => {
-    axios.put(url, data).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (err) => {
-        msag(err);
-        reject(err);
-      }
-    );
-  });
-}
-
-//统一接口处理，返回数据
-export default function (fecth: string, url:string, param = {}):any {
-  let _data = "";
-  return new Promise((resolve, reject) => {
-    switch (fecth) {
-      case "get":
-        console.log("begin a get request,and url:", url);
-        get(url, param)
-          .then(function (response) {
-            resolve(response);
-          })
-          .catch(function (error) {
-            console.log("get request GET failed.", error);
-            reject(error);
-          });
-        break;
-      case "post":
-        post(url, param)
-          .then(function (response) {
-            resolve(response);
-          })
-          .catch(function (error) {
-            console.log("get request POST failed.", error);
-            reject(error);
-          });
-        break;
-      default:
-        reject('未知的请求')
-        break;
     }
-  });
-}
-
-//失败提示
-function msag(err:AxiosError) {
-  if (err && err.response) {
-    switch (err.response.status) {
-      case 400:
-        alert(err.response);
-        break;
-      case 401:
-        alert("未授权，请登录");
-        break;
-
-      case 403:
-        alert("拒绝访问");
-        break;
-
-      case 404:
-        alert("请求地址出错");
-        break;
-
-      case 408:
-        alert("请求超时");
-        break;
-
-      case 500:
-        alert("服务器内部错误");
-        break;
-
-      case 501:
-        alert("服务未实现");
-        break;
-
-      case 502:
-        alert("网关错误");
-        break;
-
-      case 503:
-        alert("服务不可用");
-        break;
-
-      case 504:
-        alert("网关超时");
-        break;
-
-      case 505:
-        alert("HTTP版本不受支持");
-        break;
-      default:
-    }
+    return this.request({ ...conf, method: 'GET' }, options);
   }
-}
 
-/**
- * 查看返回的数据
- * @param url
- * @param params
- * @param data
- */
-// function landing(url:string, params={}, data :any) {
-//   if (data.code === -1) {
-//   }
-// }
+  post<T = any>(url: string, data: any): Promise<T>;
+  post<T = any>(config: AxiosRequestConfig, curRequestOtions?: RequestOptions): Promise<T>;
+  post(config: string | AxiosRequestConfig, data: any = undefined) {
+    let conf: AxiosRequestConfig = {};
+    let options = undefined;
+    if (typeof config === 'string') {
+      conf.url = config;
+      conf.params = data;
+    } else {
+      conf = config;
+      if (data) {
+        options = data;
+      }
+    }
+    return this.request({ ...conf, method: 'POST' }, options);
+  }
+
+
+}
+export const request = new Request({});

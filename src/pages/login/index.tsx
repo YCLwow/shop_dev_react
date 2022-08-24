@@ -2,8 +2,8 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 08:42:40
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-08 09:27:44
- * @FilePath: \代码仓库\shop_dev_react\src\pages\login\index.tsx
+ * @LastEditTime: 2022-08-23 14:38:12
+ * @FilePath: \shop_dev_react\src\pages\login\index.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
@@ -11,7 +11,7 @@
 import { Button, Checkbox, Form, Input, Toast } from 'antd-mobile';
 import React, { useContext } from 'react';
 import styles from './index.module.scss'
-import http from '../../until/http';
+import {request} from '../../until/http';
 import { useGlobal } from '../../until/GlobalContext'
 import { useNavigate } from 'react-router-dom';
 import logo from  '../../images/login/logo.jpeg'
@@ -39,9 +39,11 @@ const UseLogin: React.FC = () => {
       form.validateFields(['remember'])
       return false
     }
-    let res = await http('get', '/login',
-      param
-    )
+    // let res = await request.get('/login',param) post 是data get 是params
+    let res = await request.get({
+      url:'/login',
+      params:param
+    })
     console.log(res)
     if (res.sucess) {
       value.setToken!(res.data)
@@ -90,7 +92,6 @@ const UseLogin: React.FC = () => {
         <Form.Item rules={[{ required: true, message: '请同意测试协议后登录' }]} name="remember" valuePropName="checked" >
           <Checkbox>同意测试协议</Checkbox>
         </Form.Item>
-
         <Form.Item >
           <Button onClick={() => {
             login()
@@ -100,7 +101,6 @@ const UseLogin: React.FC = () => {
         </Form.Item>
       </Form>
     </div>
-
   );
 }
 export default UseLogin

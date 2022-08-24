@@ -1,8 +1,8 @@
 /*
  * @Author: liuyichen
  * @Date: 2022-07-28 10:06:52
- * @LastEditors: 周铁柔 aa3441759088@163.com
- * @LastEditTime: 2022-08-18 08:59:42
+ * @LastEditors: liuyichen
+ * @LastEditTime: 2022-08-24 09:38:44
  * @FilePath: \代码仓库\shop_dev_react\src\App.tsx
  * @Description:
  *
@@ -17,18 +17,25 @@ import ShoppingCat from '../src/pages/shoppingCart'
 import Classification from '../src/pages/classification'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { GlobalProvider } from '../src/until/GlobalContext'
+import UseTabHeader from '../src/components/tabHeader'
+import UseTabFooter from '../src/components/tabFooter'
 function App() {
   return (
     <GlobalProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<UseLogin />} />
-          <Route path="/login" element={<UseLogin />} />
-          <Route path="/home" element={<UseHome />} />
-          <Route path="/shoppingcat" element={<ShoppingCat />} />
-          <Route path="/classification" element={<Classification />} />
-        </Routes>
-      </BrowserRouter>
+      <div style={{ padding: '50px 0' }}>
+        <BrowserRouter>
+          <UseTabHeader />
+          <Routes>
+            <Route path="/" element={<UseLogin />} />
+            <Route path="/login" element={<UseLogin />} />
+            <Route path="/home" element={<UseHome />} />
+            <Route path="/shoppingcat" element={<ShoppingCat />} />
+            <Route path="/classification" element={<Classification />} />
+          </Routes>
+          <UseTabFooter />
+        </BrowserRouter>
+      </div>
+
     </GlobalProvider>
   )
 }
