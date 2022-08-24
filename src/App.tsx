@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-07-28 10:06:52
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-24 09:38:44
+ * @LastEditTime: 2022-08-24 10:52:01
  * @FilePath: \代码仓库\shop_dev_react\src\App.tsx
  * @Description:
  *
@@ -22,12 +22,12 @@ import UseTabFooter from '../src/components/tabFooter'
 function App() {
   return (
     <GlobalProvider>
-      <div style={{ padding: '50px 0' }}>
+      <div style={{ padding: '50px 0'}}>
         <BrowserRouter>
           <UseTabHeader />
           <Routes>
             <Route path="/" element={<UseLogin />} />
-            <Route path="/login" element={<UseLogin />} />
+            <Route  path="/login" element={<UseLogin />} />
             <Route path="/home" element={<UseHome />} />
             <Route path="/shoppingcat" element={<ShoppingCat />} />
             <Route path="/classification" element={<Classification />} />
@@ -35,7 +35,6 @@ function App() {
           <UseTabFooter />
         </BrowserRouter>
       </div>
-
     </GlobalProvider>
   )
 }
