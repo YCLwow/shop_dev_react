@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-24 09:16:03
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-24 09:42:39
+ * @LastEditTime: 2022-09-16 11:28:09
  * @FilePath: \代码仓库\shop_dev_react\src\components\tabFooter\index.tsx
  * @Description: 
  * 
@@ -54,11 +54,12 @@ const UseTabFooter = () => {
   }
 
   return <div className={styles.tabFooter}>
-    <TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
+    {pathname!=='/login'?<TabBar activeKey={pathname} onChange={value => setRouteActive(value)}>
       {tabs.map(item => (
         <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
       ))}
-    </TabBar>
+    </TabBar>:null}
+    
   </div>
 }
 export default UseTabFooter
