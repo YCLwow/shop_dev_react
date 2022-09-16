@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-07-28 10:06:52
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-09-16 15:06:20
+ * @LastEditTime: 2022-09-16 15:16:54
  * @FilePath: \代码仓库\shop_dev_react\src\App.tsx
  * @Description:
  *
@@ -26,9 +26,7 @@ function App() {
   return (
     <GlobalProvider>
       <div style={{ display: 'flex', width: "100%", height: '100%', flexDirection: 'column' }}>
-        
         <BrowserRouter>
-      
           <UseTabHeader />
           <Routes>
             <Route path="/" element={<UseLogin />} />
