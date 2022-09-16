@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-24 09:16:03
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-09-16 11:28:09
+ * @LastEditTime: 2022-09-16 13:23:51
  * @FilePath: \代码仓库\shop_dev_react\src\components\tabFooter\index.tsx
  * @Description: 
  * 
@@ -37,11 +37,11 @@ const UseTabFooter = () => {
       title: '购物车',
       icon: <UnorderedListOutline />,
     },
-    {
-      key: '/classification',
-      title: '分类',
-      icon: <MessageOutline />,
-    },
+    // {
+    //   key: '/classification',
+    //   title: '分类',
+    //   icon: <MessageOutline />,
+    // },
     {
       key: '/me',
       title: '我的',
