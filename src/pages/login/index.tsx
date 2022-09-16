@@ -2,8 +2,8 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 08:42:40
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-23 14:38:12
- * @FilePath: \shop_dev_react\src\pages\login\index.tsx
+ * @LastEditTime: 2022-09-16 08:52:33
+ * @FilePath: \代码仓库\shop_dev_react\src\pages\login\index.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
@@ -41,7 +41,7 @@ const UseLogin: React.FC = () => {
     }
     // let res = await request.get('/login',param) post 是data get 是params
     let res = await request.get({
-      url:'/login',
+      url:'/api/login',
       params:param
     })
     console.log(res)

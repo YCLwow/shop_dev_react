@@ -2,8 +2,8 @@
  * @Author: liuyichen
  * @Date: 2022-08-01 10:44:05
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-23 14:13:37
- * @FilePath: \shop_dev_react\src\until\http.tsx
+ * @LastEditTime: 2022-09-16 10:46:07
+ * @FilePath: \代码仓库\shop_dev_react\src\until\http.tsx
  * @Description: 
  * 
  * Copyright (c) 2022 by liuyichen, All Rights Reserved. 
@@ -21,7 +21,12 @@ export default class Request {
   constructor(options: AxiosRequestConfig) {
     this.options = options;
     this.axiosInstance = axios.create(options);
+    // debugger
+    this.axiosInstance.defaults.headers.common['Authorization']  = 'Bearer ' + localStorage!.getItem('token') || ''
+    // 查看实例配置  config.headers.Authorization = 'Bearer ' + token
+    // console.log(this.axiosInstance.defaults.headers.Authorization = 'Bearer ' + token)
   }
+  
   // 提供一个方法可以修改当前保存的axios实例
   setAxios(config: AxiosRequestConfig): void {
     this.axiosInstance = axios.create(config);

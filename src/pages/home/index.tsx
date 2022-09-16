@@ -2,8 +2,8 @@
  * @Author: liuyichen
  * @Date: 2022-07-29 14:46:15
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-08-22 14:41:51
- * @FilePath: \shop_dev_react\src\pages\home\index.tsx
+ * @LastEditTime: 2022-09-16 10:48:15
+ * @FilePath: \代码仓库\shop_dev_react\src\pages\home\index.tsx
  * @Description:
  *
  * Copyright (c) 2022 by liuyichen, All Rights Reserved.
@@ -19,15 +19,43 @@ import life from '../../images/home/life.jpg'
 import haopro from '../../images/home/haopro.png'
 import aiShop from '../../images/home/aiShop.png'
 import recommend from '../../images/home/recommend.jpg'
-
+import {request} from '../../until/http';
 
 import { Button, Space, Swiper, Toast } from 'antd-mobile'
+import { useState, useEffect } from 'react';
 const UseHome = () => {
   const imgs = [
     { id: 1, src: tea },
     { id: 2, src: blueMoon },
     { id: 3, src: jiu },
   ]
+
+  const [productImg,setProductImg] = useState()
+
+  const getProduct = async ()=>{
+    let res = await request.get({
+      url:'/api/productList',
+      params:{
+        productType:'1'
+      }
+    })
+    console.log(res)
+    if (res.sucess) {
+      setProductImg(res.result)
+    } else {
+      Toast.show({
+        content: res.message,
+        afterClose: () => {
+          console.log('after')
+        },
+      })
+    }
+  }
+
+  useEffect(()=>{
+    getProduct()
+    console.log(productImg)
+  })
 
   return (
     <div className={styles.home}>
