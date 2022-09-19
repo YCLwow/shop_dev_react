@@ -2,7 +2,7 @@
  * @Author: liuyichen
  * @Date: 2022-08-22 15:12:24
  * @LastEditors: liuyichen
- * @LastEditTime: 2022-09-16 11:27:14
+ * @LastEditTime: 2022-09-19 09:24:51
  * @FilePath: \代码仓库\shop_dev_react\src\components\tabHeader\index.tsx
  * @Description: 
  * 
@@ -42,7 +42,7 @@ const UseTabHeader = () => {
     }
   }, [pathname])
   return <div className={styles.tabHeader}>
-    {pathname!=='/login'? <NavBar backArrow={<MessageOutline />} >
+    {   !['/login','/'].includes(pathname) ? <NavBar backArrow={<MessageOutline />} >
       {navName}
     </NavBar>:null}
    
